@@ -131,7 +131,7 @@ with fiona.open("ENTER PATH TO SHAPE FILE","r") as test:
    
             if(one['geometry']['type']=='MultiPolygon'):
                 coordinates = ('[' + str(num) + '][' + coordinates + ')))]\n')
-                multi +=1        
+        
             else:
                 coordinates = ('[' + str(num) + '][' + coordinates + ')]\n')
             output.write(coordinates)

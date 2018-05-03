@@ -1,15 +1,19 @@
+import time
 from pyproj import Proj, transform
 import fiona
 import re
 
-num = 1
+num = 0
 
+start = time.time()
 with fiona.open("ENTER PATH TO SHAPE FILE","r") as test:
     with open('ENTER PATH TO OUTPUT TEXT FILE', 'w') as output:
         output.write("[Line_ID][Polygon]n")
+        total = len(test)
         for one in test:
-            error=False
+            
             data = str(one['geometry']['coordinates'])
+            num+=1
             
             if(one['geometry']['type']=='MultiPolygon'):
                 coordinates = 'MultiPolygon ((('
@@ -135,5 +139,10 @@ with fiona.open("ENTER PATH TO SHAPE FILE","r") as test:
             else:
                 coordinates = ('[' + str(num) + '][' + coordinates + ')]\n')
             output.write(coordinates)
+            
+            if(num % 100 == 0):
+                print(str(num) + ' of ' + str(total) + ' extracted')
 
-            num+=1
+end = time.time()
+print(str(num) + ' of ' + str(total) + ' extracted')
+print("\n\nExtraction completed in: " + str(end-start) + ' seconds')

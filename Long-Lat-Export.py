@@ -59,6 +59,9 @@ with fiona.open("ENTER PATH TO SHAPE FILE","r") as test:
 #                            coords = ENtoLL84(a, b)
 #                            coords = str(coords)
 #                            a, b = coords.split(',')
+#                            a = a[1:]
+#                            b = b[:-1]
+                        
                         coordinates = (coordinates  + a + ' ' + b + ',')
                     coordinates = coordinates[:-2]
                     coordinates = (coordinates + ',')    
@@ -117,6 +120,8 @@ with fiona.open("ENTER PATH TO SHAPE FILE","r") as test:
 #                            coords = ENtoLL84(a, b)
 #                            coords = str(coords)
 #                            a, b = coords.split(',')
+#                            a = a[1:]
+#                            b = b[:-1]
                         
                         coordinates = (coordinates  + a + ' ' + b + ',')
                     coordinates = coordinates[:-1]

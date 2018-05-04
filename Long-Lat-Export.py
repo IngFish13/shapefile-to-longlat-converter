@@ -1,3 +1,7 @@
+'''
+@Author = Stephen Winter
+'''
+
 import time
 from pyproj import Proj, transform
 import fiona
